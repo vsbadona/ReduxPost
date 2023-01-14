@@ -1,6 +1,4 @@
-
-
-    import express from "express";
+import express from "express";
 import postsRoutes from "./routes/postsRoutes.js";
 import cors from "cors"
 import mongoose from "mongoose";
