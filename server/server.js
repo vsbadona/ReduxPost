@@ -14,10 +14,7 @@ const app = express()
 
 mongoose.set("strictQuery", true);
 mongoose
-.connect(process.env.DATABASE_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-})
+.connect(process.env.DATABASE_URL)
 const db = mongoose.connection
 db.on('error',(err)=>console.log("Can't Connect To Db",err))
 db.once('open',()=>app.listen(PORT, () =>
