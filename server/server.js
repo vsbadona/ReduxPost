@@ -1,7 +1,9 @@
-import express from "express";
+
+
+    import express from "express";
 import postsRoutes from "./routes/postsRoutes.js";
 import cors from "cors"
-import mongoose, { mongo } from "mongoose";
+import mongoose from "mongoose";
 import dotenv from "dotenv"
 dotenv.config()
 
@@ -20,7 +22,10 @@ mongoose
 .connect(process.env.DATABASE_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-})
-const db = mongoose.connection
-db.on('error',(err)=>console.log(err,"Can't Connect To Db"))
-db.once('open',()=>console.log("Connected To Db"))
+}).then(() => {
+    app.listen(PORT, () =>
+        console.log(`server running on http://localhost:${PORT}`)
+    )
+}
+)
+.catch((err) => console.log(err + " can't connect to db"));
