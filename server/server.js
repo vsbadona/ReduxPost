@@ -7,7 +7,6 @@ dotenv.config()
 
 const app = express()
 const PORT = process.env.PORT || 5000
-const uri = process.env.DATABASE_URL
 
 app.use(express.json())
 app.use(cors())
@@ -22,7 +21,7 @@ app.use('/',postsRoutes)
 
 mongoose.set("strictQuery", true);
 mongoose
-  .connect(uri, {
+  .connect(process.env.DATABASE_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
