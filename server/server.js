@@ -8,9 +8,7 @@ dotenv.config()
 
 const PORT = process.env.PORT || 5000
 const app = express()
-app.listen(PORT, () =>
-console.log(`Connected To Server With Port ${PORT}`)
-)
+
 
 //                                   Database Section                                  //
 
@@ -22,7 +20,9 @@ mongoose
 })
 const db = mongoose.connection
 db.on('error',(err)=>console.log("Can't Connect To Db",err))
-db.once('open',()=>console.log("Connected To Db"))
+db.once('open',()=>app.listen(PORT, () =>
+console.log(`Connected To Server With Port ${PORT} and Connected With Db`)
+))
 
 app.use(express.json())
 app.use(cors())
