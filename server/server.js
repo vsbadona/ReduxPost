@@ -11,7 +11,6 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 app.use('/', postsRoutes)
-app.listen(PORT,()=>console.log(`App Is Listening On http://localhost:${PORT}`))
 
 //                                   Database Section                                  //
 
